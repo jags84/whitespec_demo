@@ -15,3 +15,8 @@ Write an AR model, spec and migration for a GroupEvent that would meet the needs
 ```
   rails s
 ```
+
+## RSPEC
+```
+  rspec
+```
