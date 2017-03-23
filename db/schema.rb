@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 20170323143824) do
   create_table "group_events", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "start_date"
-    t.datetime "end_date"
+    t.date     "start_date"
+    t.date     "end_date"
     t.string   "publish_status"
     t.boolean  "remove_mark",    default: false
     t.integer  "user_id"

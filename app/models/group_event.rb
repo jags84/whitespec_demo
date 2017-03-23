@@ -14,7 +14,7 @@ class GroupEvent < ApplicationRecord
 
   # Return Event duration in days
   def event_duration
-    (self.end_date - self.start_date).to_i / (24 * 60 * 60)
+    (self.end_date - self.start_date).to_i
   end
 
   # Mark for remove

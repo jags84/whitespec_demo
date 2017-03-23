@@ -16,4 +16,13 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe "Associations" do
+    context "user02" do
+      it "is not valid without many group_events" do
+        should have_many(:group_events)
+      end
+    end
+  end
+  
 end

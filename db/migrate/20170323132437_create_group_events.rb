@@ -3,8 +3,8 @@ class CreateGroupEvents < ActiveRecord::Migration[5.0]
     create_table :group_events do |t|
       t.string :name
       t.text :description
-      t.datetime :start_date
-      t.datetime :end_date
+      t.date :start_date
+      t.date :end_date
       t.string :publish_status
       t.boolean :remove_mark, :default => false
       t.references :user, foreign_key: true

@@ -7,7 +7,9 @@ json.group_events(@group_events) do |event|
   json.end_date event.end_date
   json.event_duration event.event_duration
   # User
-  json.user event.user
+  json.user do
+    json.email event.user.email
+  end
   # Location
   json.location event.location
 end
