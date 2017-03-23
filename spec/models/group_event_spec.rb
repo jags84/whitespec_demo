@@ -95,13 +95,13 @@ RSpec.describe GroupEvent, type: :model do
     context "group_event04" do
       it "must return event duration" do
         group_event = FactoryGirl.create(:group_event)
-        group_event.event_duration.should == 9
+        expect(group_event.event_duration).to eq(9)
       end
 
       it "must be mark the event as removed" do
         group_event = FactoryGirl.create(:group_event)
         group_event.mark_for_remove
-        group_event.remove_mark.should == true
+        expect(group_event.remove_mark).to eq(true)
       end
 
       it "must return a location" do
@@ -111,25 +111,25 @@ RSpec.describe GroupEvent, type: :model do
 
       it "must return true if field publish_status is published when calling is_published?" do
         group_event = FactoryGirl.create(:group_event)
-        group_event.is_published?.should == true
+        expect(group_event.is_published?).to eq(true)
       end
 
       it "must return false if field publish_status is draft when calling is_published?" do
         group_event = FactoryGirl.create(:group_event)
         group_event.publish_status = 'draft'
-        group_event.is_published?.should == false
+        expect(group_event.is_published?).to eq(false)
       end
 
       it "must return true if field publish_status is draft when calling is_draft?" do
         group_event = FactoryGirl.create(:group_event)
         group_event.publish_status = 'draft'
-        group_event.is_draft?.should == true
+        expect(group_event.is_draft?).to eq(true)
       end
 
       it "must return false if field publish_status is published when calling is_draft?" do
         group_event = FactoryGirl.create(:group_event)
         group_event.publish_status = 'published'
-        group_event.is_draft?.should == false
+        expect(group_event.is_draft?).to eq(false)
       end
 
     end

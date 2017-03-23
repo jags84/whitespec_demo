@@ -72,20 +72,20 @@ RSpec.describe Api::GroupEventsController, type: :controller do
 
       it "returns http success" do
         group_event = FactoryGirl.create(:group_event)
-        put :update, format: :json,id:group_event.id, group_event:{:id => group_event.id, :name => group_event.name}
+        put :update, format: :json, params: {id:group_event.id, group_event:{:id => group_event.id, :name => group_event.name}}
         expect(response).to have_http_status(:success)
       end
 
       it "returns 406 status without json format" do
         group_event = FactoryGirl.create(:group_event)
-        put :update, id: group_event.id
+        put :update, params: {id:group_event.id}
         is_expected.to respond_with 406
       end
 
       it "must update one EventGroup record" do
         group_event = FactoryGirl.create(:group_event)
         group_event.name = "New Update Name"
-        put :update, format: :json, id:group_event.id, group_event:{:id => group_event.id, :name => group_event.name}
+        put :update, format: :json, params: {id:group_event.id, group_event:{:id => group_event.id, :name => group_event.name}}
 
         parsed_response = JSON.parse(response.body)
         expect(parsed_response).to match({
