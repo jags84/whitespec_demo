@@ -22,19 +22,10 @@ ActiveRecord::Schema.define(version: 20170323143824) do
     t.date     "end_date"
     t.string   "publish_status"
     t.boolean  "remove_mark",    default: false
-    t.integer  "user_id"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.float    "latitude"
     t.float    "longitude"
-    t.index ["user_id"], name: "index_group_events_on_user_id", using: :btree
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_foreign_key "group_events", "users"
 end

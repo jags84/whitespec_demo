@@ -7,6 +7,5 @@ FactoryGirl.define do
     publish_status "published"
     latitude 10.44
     longitude -66.04
-    user
   end
 end
