@@ -11,7 +11,7 @@ class Api::GroupEventsController < ApplicationController
 
   def create
     # Create new Event
-    @group_event = current_user.group_events.new(group_event_params)
+    @group_event = GroupEvent.new(group_event_params)
     if @group_event.save
       @group_event
     else
@@ -31,7 +31,6 @@ class Api::GroupEventsController < ApplicationController
   def destroy
     # Mark for remove
     @group_event.mark_for_remove
-    render status: 200
   end
 
   private
@@ -42,6 +41,6 @@ class Api::GroupEventsController < ApplicationController
 
     # Params
     def group_event_params
-      params.require(:group_event).permit(:name, :description, :start_date, :end_date, :publish_status, :user_id, :latitude, :longitude)
+      params.require(:group_event).permit(:name, :description, :start_date, :end_date, :publish_status, :latitude, :longitude)
     end
 end

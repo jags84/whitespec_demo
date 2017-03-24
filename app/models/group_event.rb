@@ -1,9 +1,8 @@
 class GroupEvent < ApplicationRecord
-  belongs_to :user
   reverse_geocoded_by :latitude, :longitude
 
   # Verify all field are presence if publish_status us published
-  validates :name, :description, :start_date, :end_date, :user_id, :latitude, :longitude, presence: true, if: :is_published?
+  validates :name, :description, :start_date, :end_date, :latitude, :longitude, presence: true, if: :is_published?
   # Verify only name is necesary if publish_status us draft
   validates :name, presence: true, if: :is_draft?
 
@@ -14,7 +13,11 @@ class GroupEvent < ApplicationRecord
 
   # Return Event duration in days
   def event_duration
-    (self.end_date - self.start_date).to_i
+    if self.start_date && self.end_date
+      (self.end_date - self.start_date).to_i
+    else
+      nil
+    end
   end
 
   # Mark for remove
@@ -47,6 +50,6 @@ class GroupEvent < ApplicationRecord
   # Private
   private
     def group_event_params
-      params.require(:group_event).permit(:name, :description, :start_date, :end_date, :publish_status, :remove_mark, :user_id, :latitude, :longitude)
+      params.require(:group_event).permit(:name, :description, :start_date, :end_date, :publish_status, :remove_mark, :latitude, :longitude)
     end
 end

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe GroupEvent, type: :model do
   subject {
-    described_class.new(name: "Event 1", description:"Description 1", start_date:"2017-05-01", end_date:"2017-05-10", publish_status:"published", latitude:10.44, longitude:-66.09, user: User.create(email: 'client@server.com'))
+    described_class.new(name: "Event 1", description:"Description 1", start_date:"2017-05-01", end_date:"2017-05-10", publish_status:"published", latitude:10.44, longitude:-66.09)
   }
 
   describe "Record Validations" do
@@ -79,14 +79,6 @@ RSpec.describe GroupEvent, type: :model do
         subject.publish_status = 'draft'
         subject.longitude = nil
         expect(subject).to be_valid
-      end
-    end
-  end
-
-  describe "Associations" do
-    context "group_event03" do
-      it "is not valid without belong_to user" do
-        should belong_to(:user)
       end
     end
   end

@@ -7,7 +7,6 @@ class CreateGroupEvents < ActiveRecord::Migration[5.0]
       t.date :end_date
       t.string :publish_status
       t.boolean :remove_mark, :default => false
-      t.references :user, foreign_key: true
 
       t.timestamps
     end
