@@ -25,6 +25,13 @@ RSpec.describe Api::GroupEventsController, type: :controller do
         parsed_response = JSON.parse(response.body)
         expect(parsed_response['group_events'].length).to eq(5)
       end
+
+      it "must paginate" do
+        group_events = FactoryGirl.create_list(:group_event, 15)
+        get :index, format: :json, params: {page: 2}
+        parsed_response = JSON.parse(response.body)
+        expect(parsed_response['group_events'].length).to eq(5)
+      end
     end
   end
 
