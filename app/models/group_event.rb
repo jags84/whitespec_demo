@@ -8,7 +8,7 @@ class GroupEvent < ApplicationRecord
 
   # Return active events
   def self.get_all_events(params)
-    GroupEvent.where(remove_mark: false, publish_status: 'published').paginate(:page => params[:page], :per_page => 30)
+    GroupEvent.where(remove_mark: false, publish_status: 'published').paginate(:page => params[:page], :per_page => 10)
   end
 
   # Return Event duration in days
